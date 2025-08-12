@@ -2,10 +2,10 @@
 
 ## Routes
 
-| HTTP Method | Route  | Description           | Controller Method             |
-|-------------|--------|-----------------------|-------------------------------|
-| POST        | /new   | Create a new track    | trackController.createTrack   |
-| GET         | /      | Get all tracks        | trackController.trackIndex    |
-| GET         | /:id   | Get track details     | trackController.trackDetails  |
-| PUT         | /:id   | Update a track        | trackController.trackUpdate   |
-| DELETE      | /:id   | Delete a track        | trackController.trackDelete   |
+| HTTP Method | Route  | Description           |             
+|-------------|--------|-----------------------|
+| POST        | /new   | Create a new track    | 
+| GET         | /      | Get all tracks        | 
+| GET         | /:id   | Get track details     | 
+| PUT         | /:id   | Update a track        | 
+| DELETE      | /:id   | Delete a track        | 
