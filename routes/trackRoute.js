@@ -4,5 +4,6 @@ const trackController = require('../controllers/track')
 
 router.post('/new', trackController.createTrack)
 router.get('/', trackController.trackIndex)
+router.get('/:id', trackController.trackDetails)
 
 module.exports = router

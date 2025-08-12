@@ -31,8 +31,27 @@ async function trackIndex(req, res) {
 
 }
 
+async function trackDetails(req, res) {
+
+    try {
+        const track = await Track.findById(req.params.id)
+
+        if (track) {
+            res.status(200).json(track)
+        } else {
+            res.sendStatus(204)
+        }
+
+    } catch (error) {
+        res.status(500).json({ error: error.message })
+        console.log(error)
+    }
+
+}
+
 
 module.exports = {
     createTrack,
-    trackIndex
+    trackIndex,
+    trackDetails
 }
