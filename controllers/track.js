@@ -13,7 +13,26 @@ async function createTrack(req, res) {
 
 }
 
+async function trackIndex(req, res) {
+
+    try {
+        const allTracks = await Track.find()
+
+        if (allTracks) {
+            res.status(200).json(allTracks)
+        } else {
+            res.sendStatus(204)
+        }
+
+    } catch (error) {
+        res.status(500).json({ error: error.message })
+        console.log(error)
+    }
+
+}
+
 
 module.exports = {
-    createTrack
+    createTrack,
+    trackIndex
 }
