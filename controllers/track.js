@@ -21,7 +21,7 @@ async function trackIndex(req, res) {
         if (allTracks) {
             res.status(200).json(allTracks)
         } else {
-            res.sendStatus(204)
+            res.status(204)
         }
 
     } catch (error) {
@@ -39,7 +39,7 @@ async function trackDetails(req, res) {
         if (track) {
             res.status(200).json(track)
         } else {
-            res.sendStatus(204)
+            res.status(204)
         }
 
     } catch (error) {
@@ -52,12 +52,30 @@ async function trackDetails(req, res) {
 async function trackUpdate(req, res) {
 
     try {
-        const Updatedtrack = await Track.findByIdAndUpdate(req.params.id, req.body, { new: true })
+        const updatedtrack = await Track.findByIdAndUpdate(req.params.id, req.body, { new: true })
 
-        if (Updatedtrack) {
-            res.status(200).json(Updatedtrack)
+        if (updatedtrack) {
+            res.status(200).json(updatedtrack)
         } else {
-            res.sendStatus(204)
+            res.status(204)
+        }
+
+    } catch (error) {
+        res.status(500).json({ error: error.message })
+        console.log(error)
+    }
+
+}
+
+async function trackDelete(req, res) {
+
+    try {
+        const deletedtrack = await Track.findByIdAndDelete(req.params.id, req.body)
+
+        if (deletedtrack) {
+            res.status(200).json(deletedtrack)
+        } else {
+            res.sendStatus(404)
         }
 
     } catch (error) {
@@ -72,5 +90,6 @@ module.exports = {
     createTrack,
     trackIndex,
     trackDetails,
-    trackUpdate
+    trackUpdate,
+    trackDelete
 }
