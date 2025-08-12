@@ -2,16 +2,19 @@ const express = require('express')
 const mongoose = require('mongoose')
 const morgen = require('morgan')
 const dotenv = require('dotenv')
+const trackRoute = require('./routes/trackRoute')
 
 dotenv.config()
-const app = express()
+const app = express() 
 
 mongoose.connect(process.env.MONGOOSE_URI)
 mongoose.connection.on('connected', () => {
     console.log('connected to mongoose')
 })
 
+app.use(express.json())
 app.use(morgen('dev'))
+app.use('/tracks', trackRoute)
 
 
 const port = process.env.PORT || 3000
