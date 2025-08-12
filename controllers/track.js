@@ -49,9 +49,28 @@ async function trackDetails(req, res) {
 
 }
 
+async function trackUpdate(req, res) {
+
+    try {
+        const Updatedtrack = await Track.findByIdAndUpdate(req.params.id, req.body, { new: true })
+
+        if (Updatedtrack) {
+            res.status(200).json(Updatedtrack)
+        } else {
+            res.sendStatus(204)
+        }
+
+    } catch (error) {
+        res.status(500).json({ error: error.message })
+        console.log(error)
+    }
+
+}
+
 
 module.exports = {
     createTrack,
     trackIndex,
-    trackDetails
+    trackDetails,
+    trackUpdate
 }
